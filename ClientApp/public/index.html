@@ -1,95 +1,11 @@
-﻿<head>
-    <!-- development version, includes helpful console warnings -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
-    <!-- production version, optimized for size and speed -->
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-
-    <!-- template for the modal component -->
-    <script type="text/x-template" id="modal-template">
-        <transition name="modal">
-            <div class="modal-mask" @click="$emit('close')">
-                <div class="modal-wrapper">
-                    <div class="modal-container" v-on:click.stop>
-                        <slot name="model-content">
-                            default content
-                        </slot>
-                    </div>
-                </div>
-            </div>
-        </transition>
-    </script>
-
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous" />
-
-    <script src="index.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles/index.css" />
-    <link rel="stylesheet" type="text/css" href="styles/custom-checkbox.css" />
-    <link rel="stylesheet" type="text/css" href="styles/modal-template.css" />
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>My app</title>
 </head>
-
 <body>
-    <div id="todo-list-container">
-        <button v-if="hasDoneItems" type="button" class="btn btn-light clear-button" @click="removeDone"></button>
-        <button type="button" class="btn btn-light add-button" @click="showModal = true"></button><br /><br /><br />
-
-        <!-- use the modal component, pass in the prop -->
-        <modal v-if="showModal" @close="closeModal">
-            <!--
-                you can use custom content here to overwrite
-                default content
-            -->
-            <div slot="model-content">
-                <form id="todo=item-form" @submit.prevent="addUpdateTodo">
-                    <div class="field">
-                        <label class="field-label">Title</label><br />
-                        <input type="text" class="title-input" name="todo-title" v-model="todoTitle" />
-                    </div>
-                    <div class="field">
-                        <label class="field-label">Description</label><br />
-                        <textarea class="description-input"
-                                  name="todo-description"
-                                  v-model="todoDescription"></textarea>
-                    </div>
-                    <div v-if="todoID == -1" class="field has-text-right add-todo-container">
-                        <button type="submit" class="btn btn-primary add-todo-button">add</button>
-                    </div>
-                    <div v-else class="field has-text-right add-todo-container">
-                        <button type="submit" class="btn btn-primary add-todo-button">update</button>
-                    </div>
-                </form>
-            </div>
-        </modal>
-
-        <transition-group name="todo-list" tag="ul" class="todo-list">
-            <li v-for="item in items" v-bind:key="item.id">
-                <table class="todo-list-table">
-                    <tr>
-                        <td>
-                            <span v-if="item.done">
-                                <label class="checkbox-container todo-list-label">
-                                    <del> {{ item.title }}</del>
-                                    <input type="checkbox" v-on:click="setDone(item)" checked="checked" />
-                                    <span class="checkmark"></span>
-                                </label>
-                            </span>
-                            <span v-else>
-                                <label class="checkbox-container todo-list-label">
-                                    {{ item.title }}
-                                    <input type="checkbox" v-on:click="setDone(item)" />
-                                    <span class="checkmark"></span>
-                                </label>
-                            </span>
-                        </td>
-                        <td class="todo-list-buttons-container">
-                            <button type="button" class="btn btn-light delete-button" @click="remove(item)"></button>
-                            <button type="button" class="btn btn-light edit-button" @click="openModal(item)"></button>
-                        </td>
-                    </tr>
-                </table>
-            </li>
-        </transition-group>
-    </div>
+    <p>This paragraph is a part of HTML.</p>
+    <nav id="navigation"></nav>
+    <p>This paragraph is also a part of HTML.</p>
 </body>
+</html>
