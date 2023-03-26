@@ -4,7 +4,15 @@ import AppRoutes from './AppRoutes';
 import AuthorizeRoute from './components/api-authorization/AuthorizeRoute';
 import { Layout } from './components/Layout';
 import './custom.css';
-
+class Car extends React.Component {
+  constructor() {
+    super();
+    this.state = {color: "red"};
+  }
+  render() {
+    return <h2>I am a Car!</h2>;
+  }
+}
 export default class App extends Component {
   static displayName = App.name;
 
